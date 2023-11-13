@@ -1,0 +1,28 @@
+mqtt:
+  switch:
+    - unique_id: mqtt_fritz_7590_ax_connection6
+      name: "FRITZ!Box 7590 AX VPN Connection6"
+      icon: "mdi:vpn"
+      command_topic: "fritz2mqtt"
+      payload_on: >-
+        {
+           "page": "shareWireguard",
+           "connection6": "on",
+           "active_connection6": 1,
+           "apply": null
+         }
+      payload_off: >-
+        {
+           "page": "shareWireguard",
+           "connection6": "off",
+           "active_connection6": 0,
+           "apply": null
+         }
+      state_topic: "fritz2mqtt/shareWireguard"
+      state_on: true
+      state_off: false
+      value_template: "{{ value_json.data.init.boxConnections.connection6.active }}"
+      availability:
+        - topic: "fritz2mqtt/shareWireguard"
+          value_template: "{{ value_json.data.init.boxConnections.connection6.editable }}"
+          payload_available: true

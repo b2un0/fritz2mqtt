@@ -1,0 +1,29 @@
+{
+  "name": "fritz2mqtt",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "node implementation to control the avm fritz box rest api over mqtt",
+  "author": "Branko Wilhelm <bw@z-index.net> (https://z-index.net)",
+  "main": "main.js",
+  "scripts": {
+    "dev": "./node_modules/.bin/nodemon main.js"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.3.2",
+    "mqtt": "^5.2.1",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">= 18"
+  },
+  "bugs": {
+    "url": "https://github.com/b2un0/fritz2mqtt/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/b2un0/fritz2mqtt.git"
+  }
+}

@@ -1,0 +1,7 @@
+// published to "MQTT_TOPIC=fritz2mqtt"
+{
+  "page": "shareWireguard",
+  "connection6": "on",
+  "active_connection6": 1,
+  "apply": null // mandatory!
+}

@@ -1,0 +1,10 @@
+alias: AVM FRITZ!Box 7590 AX - get shareWireguard status
+trigger:
+  - platform: time_pattern
+    minutes: /15
+action:
+  - service: mqtt.publish
+    data:
+      topic: fritz2mqtt
+      payload: "{\"page\": \"shareWireguard\"}"
+mode: single
