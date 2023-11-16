@@ -2,7 +2,7 @@
 
 const {URLSearchParams} = require('node:url');
 const fetch = require('node-fetch');
-const {XMLParser} = require("fast-xml-parser");
+const {XMLParser} = require('fast-xml-parser');
 const crypto = require('node:crypto');
 const mqtt = require('mqtt');
 
@@ -10,11 +10,8 @@ class fritz2mqtt {
 
     constructor() {
         this.xmlParser = new XMLParser();
-        this.mqtt();
-        console.log('started..');
-    }
 
-    async mqtt() {
+        console.log('started..');
 
         let mqttClient = mqtt.connect(process.env.MQTT_HOST);
 
@@ -37,35 +34,34 @@ class fritz2mqtt {
 
             console.log('handle payload for page: %s', payload.page);
 
-            const dataRequest = await fetch(process.env.FRITZ_HOST + '/data.lua', {method: 'POST', body: new URLSearchParams(payload)});
-            const dataJson = await dataRequest.json();
+            let dataRequest = await fetch(process.env.FRITZ_HOST + '/data.lua', {method: 'POST', body: new URLSearchParams(payload)});
+            let dataText = await dataRequest.text();
 
-            let responseData = JSON.stringify(dataJson);
-            mqttClient.publish(process.env.MQTT_TOPIC + '/' + payload.page, responseData);
-
-            console.info('publish response to: %s (length %d)', process.env.MQTT_TOPIC + '/' + payload.page, responseData.length);
+            mqttClient.publish(process.env.MQTT_TOPIC + '/' + payload.page, dataText);
+            console.info('publish response to: %s (length %d)', process.env.MQTT_TOPIC + '/' + payload.page, dataText.length);
         });
     }
 
     async login() {
-        const challengeResponse = await fetch(process.env.FRITZ_HOST + '/login_sid.lua', {method: 'GET'});
-        const challengeXml = await challengeResponse.text();
+        let challengeResponse = await fetch(process.env.FRITZ_HOST + '/login_sid.lua', {method: 'GET'});
+        let challengeXml = await challengeResponse.text();
         let challengeJson = this.xmlParser.parse(challengeXml);
 
-        if (!challengeJson.SessionInfo.Challenge) {
-            console.error('noa valid "Challenge" get from %s', process.env.FRITZ_HOST);
+        if (!challengeJson || !challengeJson.SessionInfo.Challenge) {
+            console.error('no valid "Challenge" get from %s', process.env.FRITZ_HOST);
         }
 
-        const loginParams = new URLSearchParams();
+        let loginParams = new URLSearchParams();
         loginParams.append('username', process.env.FRITZ_USERNAME);
         loginParams.append('response', this.getLoginChallenge(challengeJson.SessionInfo.Challenge, process.env.FRITZ_PASSWORD));
 
-        const loginResponse = await fetch(process.env.FRITZ_HOST + '/login_sid.lua', {method: 'POST', body: loginParams});
-        const loginXml = await loginResponse.text();
+        let loginResponse = await fetch(process.env.FRITZ_HOST + '/login_sid.lua', {method: 'POST', body: loginParams});
+        let loginXml = await loginResponse.text();
         let loginJson = this.xmlParser.parse(loginXml);
 
-        if (!loginJson.SessionInfo.SID) {
+        if (!loginJson || !loginJson.SessionInfo.SID) {
             console.error('no valid "SID" get from %s', process.env.FRITZ_HOST);
+            return null;
         }
 
         return loginJson.SessionInfo.SID;
