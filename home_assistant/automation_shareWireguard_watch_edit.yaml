@@ -1,0 +1,11 @@
+alias: AVM FRITZ!Box - mqtt watch wireguard_edit
+trigger:
+  - platform: mqtt
+    topic: fritz2mqtt/wireguard_edit
+condition: []
+action:
+  - service: mqtt.publish
+    data:
+      payload: "{ \"page\": \"shareWireguard\" }"
+      topic: fritz2mqtt
+mode: single
