@@ -1,7 +1,7 @@
 // published to "MQTT_TOPIC=fritz2mqtt"
 {
   "page": "wireguard_edit",
-  "uid": "connection6", // internal name of the target connection
+  "uid": "connection6", // "connection6" is the internal name of the target connection
   "accessdefaultroute": "on",
   "apply": null // mandatory!
 }

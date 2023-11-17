@@ -1,7 +1,7 @@
 // published to "MQTT_TOPIC=fritz2mqtt"
 {
   "page": "shareWireguard",
-  "connection6": "on",
+  "connection6": "on", // "connection6" is the internal name of the target connection
   "active_connection6": 1,
   "apply": null // mandatory!
 }
