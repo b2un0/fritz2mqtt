@@ -1,7 +1,6 @@
 'use strict';
 
 const {URLSearchParams} = require('node:url');
-const fetch = require('node-fetch');
 const {XMLParser} = require('fast-xml-parser');
 const crypto = require('node:crypto');
 const mqtt = require('mqtt');
@@ -17,7 +16,7 @@ class fritz2mqtt {
 
         mqttClient.on('connect', () => {
             mqttClient.subscribe(process.env.MQTT_TOPIC);
-            console.log('mqtt subscribed: ', process.env.MQTT_TOPIC)
+            console.log('mqtt subscribed:', process.env.MQTT_TOPIC)
         });
 
         mqttClient.on('message', async (topic, message) => {

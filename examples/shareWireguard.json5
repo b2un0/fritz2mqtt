@@ -1,4 +1,4 @@
-// published this to "MQTT_TOPIC=fritz2mqtt"
+// published to "MQTT_TOPIC=fritz2mqtt"
 {
   "page": "shareWireguard"
 }

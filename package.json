@@ -10,14 +10,13 @@
   },
   "dependencies": {
     "fast-xml-parser": "^4.3.2",
-    "mqtt": "^5.2.1",
-    "node-fetch": "^2.7.0"
+    "mqtt": "^5.5.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
   "engines": {
-    "node": ">= 18"
+    "node": ">= 20"
   },
   "bugs": {
     "url": "https://github.com/b2un0/fritz2mqtt/issues"

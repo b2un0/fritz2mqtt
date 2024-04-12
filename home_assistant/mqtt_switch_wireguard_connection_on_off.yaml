@@ -10,14 +10,14 @@ mqtt:
           "connection6": "on",
           "active_connection6": 1,
           "apply": null
-         }
+        }
       payload_off: >-
         {
           "page": "shareWireguard",
           "connection6": "off",
           "active_connection6": 0,
           "apply": null
-         }
+        }
       state_topic: "fritz2mqtt/shareWireguard"
       state_on: true
       state_off: false
