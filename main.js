@@ -20,16 +20,21 @@ class fritz2mqtt {
         });
 
         mqttClient.on('message', async (topic, message) => {
-            let sid = await this.login();
-
             let msg = message.toString();
+            let payload;
 
             if (!msg) {
                 return;
             }
 
-            let payload = JSON.parse(msg);
-            payload.sid = sid;
+            try {
+                payload = JSON.parse(msg);
+            } catch (ex) {
+                console.error(ex);
+                return;
+            }
+            
+            payload.sid = await this.login();
 
             console.log('handle payload for page: %s', payload.page);
 
