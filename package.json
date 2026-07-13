@@ -9,7 +9,7 @@
     "dev": "./node_modules/.bin/nodemon main.js"
   },
   "dependencies": {
-    "fast-xml-parser": "^5.9.3",
+    "fast-xml-parser": "^5.10.0",
     "mqtt": "^5.15.2"
   },
   "devDependencies": {
