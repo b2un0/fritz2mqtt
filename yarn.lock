@@ -306,10 +306,10 @@ mqtt-packet@^9.0.2:
     debug "^4.3.4"
     process-nextick-args "^2.0.1"
 
-mqtt@^5.16.0:
-  version "5.16.0"
-  resolved "https://registry.yarnpkg.com/mqtt/-/mqtt-5.16.0.tgz#c6721eb165f5bb6a8305219a35da7790a43ae10e"
-  integrity sha512-G0VsEtuJz5sJUgZJaaADMVfW7SIFPzkIuHR+d6rk+tBeSwdCfd9BaIRycRfd2AbyFDEmLlFM+SDQeti/+IbOnw==
+mqtt@^5.16.1:
+  version "5.16.1"
+  resolved "https://registry.yarnpkg.com/mqtt/-/mqtt-5.16.1.tgz#e63f87bb7e6bde61f16902ba6210e34c229e3763"
+  integrity sha512-9aEaiR/mLblsMAiynD8quhcGTaINdta2bdyknAtfVzESfoe6Ncdh/uEs5p+3zqcTEtgYErwL4pNk0QkAynXxlg==
   dependencies:
     "@types/readable-stream" "^4.0.21"
     "@types/ws" "^8.18.1"
